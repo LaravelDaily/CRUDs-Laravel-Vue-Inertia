@@ -12,7 +12,7 @@ Follow these steps to set up the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/LaravelDaily/CRUDs-Laravel-Blade.git project
+   git clone https://github.com/LaravelDaily/CRUDs-Laravel-Vue-Inertia.git project
    cd project
    ```
 
