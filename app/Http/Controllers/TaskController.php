@@ -31,12 +31,12 @@ class TaskController extends Controller
             ->with('message', __('Task created successfully.'));
     }
 
-    public function edit(Task $task)
+    public function edit(Task $task): Response
     {
         return Inertia::render('Tasks/Edit', compact('task'));
     }
 
-    public function update(Task $task, UpdateTaskRequest $request)
+    public function update(Task $task, UpdateTaskRequest $request): RedirectResponse
     {
         $task->update($request->validated());
 
@@ -44,7 +44,7 @@ class TaskController extends Controller
             ->with('message', __('Task updated successfully'));
     }
 
-    public function destroy(Task $task)
+    public function destroy(Task $task): RedirectResponse
     {
         $task->delete();
 
