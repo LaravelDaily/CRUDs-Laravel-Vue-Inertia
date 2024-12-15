@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 const props = defineProps({
     task: {
@@ -52,9 +53,9 @@ const form = useForm(props.task)
                             </div>
 
                             <div class="mt-4">
-                                <button type="submit" :disabled="form.processing" class="inline-block rounded-md bg-blue-500 px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white shadow-sm disabled:opacity-25">
+                                <PrimaryButton type="submit" :disabled="form.processing" class="inline-block rounded-md bg-blue-500 px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white shadow-sm disabled:opacity-25">
                                     Save task
-                                </button>
+                                </PrimaryButton>
                             </div>
                         </form>
                     </div>
