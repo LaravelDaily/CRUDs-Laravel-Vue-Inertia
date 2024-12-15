@@ -152,6 +152,12 @@ const showingNavigationDropdown = ref(false);
                         >
                             Dashboard
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('tasks.index')"
+                            :active="route().current('tasks.*')"
+                        >
+                            Tasks
+                        </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
