@@ -28,7 +28,7 @@ class TaskController extends Controller
         Task::create($request->validated());
 
         return redirect()->route('tasks.index')
-            ->with('message', __('Task created successfully.'));
+            ->with('message', __('Task created successfully'));
     }
 
     public function edit(Task $task): Response
