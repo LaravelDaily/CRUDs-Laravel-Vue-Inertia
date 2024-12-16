@@ -16,6 +16,10 @@ const destroy = (id) => {
         router.delete(route('tasks.destroy', id))
     }
 }
+
+const excerpt = (value, length = 50) => {
+    return value.length > length ? value.substring(0, length) + '...' : value
+}
 </script>
 
 <template>
@@ -57,7 +61,7 @@ const destroy = (id) => {
                                         {{ task.name }}
                                     </td>
                                     <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                                        {{ task.description.substring(0, 50) }}...
+                                        {{ excerpt(task.description) }}
                                     </td>
                                     <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
                                         <LinkButton :href="route('tasks.edit', task.id)">
