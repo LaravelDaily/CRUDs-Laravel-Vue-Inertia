@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import DangerButton from "@/Components/DangerButton.vue";
 import LinkButton from "@/Components/LinkButton.vue";
+import AlertMessage from '@/Components/AlertMessage.vue';
 
 const props = defineProps({
     tasks: {
@@ -39,6 +40,8 @@ const excerpt = (value, length = 50) => {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="overflow-hidden overflow-x-auto p-6 bg-white border-b border-gray-200">
                         <div class="min-w-full align-middle">
+                            <AlertMessage />
+
                             <Link :href="route('tasks.create')" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                 Add new task
                             </Link>
