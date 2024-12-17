@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use Inertia\Inertia;
@@ -20,7 +21,9 @@ class TaskController extends Controller
 
     public function create(): Response
     {
-        return Inertia::render('Tasks/Create');
+        $users = User::select(['id', 'name'])->pluck('name', 'id');
+
+        return Inertia::render('Tasks/Create', compact('users'));
     }
 
     public function store(StoreTaskRequest $request): RedirectResponse
@@ -33,7 +36,9 @@ class TaskController extends Controller
 
     public function edit(Task $task): Response
     {
-        return Inertia::render('Tasks/Edit', compact('task'));
+        $users = User::select(['id', 'name'])->pluck('name', 'id');
+
+        return Inertia::render('Tasks/Edit', compact('task', 'users'));
     }
 
     public function update(Task $task, UpdateTaskRequest $request): RedirectResponse

@@ -2,6 +2,17 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import InputLabel from '@/Components/InputLabel.vue';
+import SelectInput from '@/Components/SelectInput.vue';
+import InputError from '@/Components/InputError.vue';
+import TextInput from '@/Components/TextInput.vue';
+
+const props = defineProps({
+    users: {
+        type: Array,
+        required: true
+    }
+})
 
 const form = useForm({
     name: '',
@@ -29,23 +40,43 @@ const form = useForm({
                         <form @submit.prevent="form.post(route('tasks.store'))">
                             <div>
                                 <div>
-                                    <label for="name" class="block text-sm font-medium text-gray-700">
-                                        Name
-                                    </label>
-                                    <input v-model="form.name" type="text" id="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                    <p class="mt-2 text-sm text-red-600" v-show="form.errors.name">
-                                        {{ form.errors.name }}
-                                    </p>
+                                    <InputLabel for="name" value="Name" />
+
+                                    <TextInput
+                                        id="name"
+                                        type="text"
+                                        class="mt-1 block w-full"
+                                        v-model="form.name"
+                                        required
+                                    />
+
+                                    <InputError class="mt-2" :message="form.errors.name" />
                                 </div>
 
                                 <div class="mt-4">
-                                    <label for="description" class="block text-sm font-medium text-gray-700">
-                                        Description
-                                    </label>
-                                    <input v-model="form.description" type="text" id="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                    <p class="mt-2 text-sm text-red-600" v-show="form.errors.description">
-                                        {{ form.errors.description }}
-                                    </p>
+                                    <InputLabel for="description" value="Description" />
+
+                                    <TextInput
+                                        id="description"
+                                        type="text"
+                                        class="mt-1 block w-full"
+                                        v-model="form.description"
+                                        required
+                                    />
+
+                                    <InputError class="mt-2" :message="form.errors.description" />
+                                </div>
+
+                                <div class="mt-4">
+                                    <InputLabel for="email" value="Assigned to" />
+
+                                    <SelectInput
+                                        v-model="form.user_id"
+                                        class="mt-1 block w-full"
+                                        :options="props.users"
+                                    />
+
+                                    <InputError class="mt-2" :message="form.errors.user_id" />
                                 </div>
                             </div>
 
