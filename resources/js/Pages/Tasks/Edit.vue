@@ -40,7 +40,7 @@ const form = useForm(props.task)
                         <form @submit.prevent="form.put(route('tasks.update', task.id))">
                             <div>
                                 <div>
-                                    <InputLabel for="name" value="Name" />
+                                    <InputLabel for="name" value="Name" required />
 
                                     <TextInput
                                         id="name"
@@ -54,7 +54,7 @@ const form = useForm(props.task)
                                 </div>
 
                                 <div class="mt-4">
-                                    <InputLabel for="description" value="Description" />
+                                    <InputLabel for="description" value="Description" required />
 
                                     <TextInput
                                         id="description"
