@@ -52,13 +52,14 @@ This project goes beyond the default Laravel Breeze setup with the following enh
 1. Return Types in the Controller: ex. `function destroy(Task $task): RedirectResponse`
 2. Utilizes Form Request classes for validation, with `$request->validated()` then used in the Controller
 3. Includes Factory and Seeder for the `Task` Model
-4. [TODO] Uses pagination in Controller
-5. [TODO] Modifies Laravel Breeze Vue component `<InputLabel>` to add a "required" asterisk parameter
-6. [TODO] Uses "flash" messages in the session to show the result after store/update/delete. Adds a custom Blade component `<AlertMessage>` for this.
-7. Transform the links to look like buttons visually, with the same Tailwind styles as Laravel Breeze components. Adds a custom Vue component `<LinkButton>` for this.
-8. [TODO] Includes Pest test file `TasksCRUDTest` that has methods to test all Controller routes and also validation of each field.
+4. Uses pagination in Controller
+5. Modifies Laravel Breeze Vue component `<InputLabel>` to add a "required" asterisk parameter
+6. Created a custom Vue component `<SelectInput>` for the dropdown using the same Laravel Breeze CSS styles
+7. Uses "flash" messages in the session to show the result after store/update/delete. Adds a custom Vue component `<AlertMessage>` for this.
+8. Transform the links to look like buttons visually, with the same Tailwind styles as Laravel Breeze components. Adds a custom Vue component `<LinkButton>` for this.
+9. Includes Pest test file `TasksCRUDTest` that has methods to test all Controller routes and also validation of each field.
 
-[TODO] Image of the result of tests
+![](https://laraveldaily.com/uploads/2024/12/crud-vue-tasks-tests.png)
 
 ---
 
