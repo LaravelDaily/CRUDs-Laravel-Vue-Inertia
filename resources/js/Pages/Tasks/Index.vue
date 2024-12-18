@@ -4,6 +4,7 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import DangerButton from "@/Components/DangerButton.vue";
 import LinkButton from "@/Components/LinkButton.vue";
 import AlertMessage from '@/Components/AlertMessage.vue';
+import Pagination from '@/Components/Pagination.vue';
 
 const props = defineProps({
     tasks: {
@@ -59,24 +60,26 @@ const excerpt = (value, length = 50) => {
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 divide-solid">
-                                <tr v-for="task in tasks">
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                                        {{ task.name }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                                        {{ excerpt(task.description) }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                                        <LinkButton :href="route('tasks.edit', task.id)">
-                                            Edit
-                                        </LinkButton>
-                                        <DangerButton @click="destroy(task.id)" type="button" class="ml-2 rounded-md bg-red-600 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white shadow-sm">
-                                            Delete
-                                        </DangerButton>
-                                    </td>
-                                </tr>
+                                    <tr v-for="task in tasks.data">
+                                        <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
+                                            {{ task.name }}
+                                        </td>
+                                        <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
+                                            {{ excerpt(task.description) }}
+                                        </td>
+                                        <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
+                                            <LinkButton :href="route('tasks.edit', task.id)">
+                                                Edit
+                                            </LinkButton>
+                                            <DangerButton @click="destroy(task.id)" type="button" class="ml-2 rounded-md bg-red-600 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white shadow-sm">
+                                                Delete
+                                            </DangerButton>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
+
+                            <Pagination :pagination="tasks" />
                         </div>
                     </div>
                 </div>
